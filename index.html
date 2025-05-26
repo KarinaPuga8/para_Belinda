@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Para Belinda 💖</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      overflow: hidden;
+      position: relative;
+      height: 100vh;
+    }
+
+    .mensaje {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      max-width: 600px;
+      text-align: center;
+      z-index: 10;
+      overflow: visible;
+    }
+
+    .mensaje h1, .mensaje p, .pareja {
+      position: relative;
+      z-index: 12;
+    }
+
+    .pareja {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .pareja img {
+      width: 200px;
+      border-radius: 15px;
+    }
+
+    /* Corazones lilas que caen de fondo */
+    .corazon-lila {
+      position: fixed;
+      top: -30px;
+      width: 15px;
+      height: 15px;
+      background: #9b59b6; /* lila */
+      clip-path: polygon(
+        50% 0%, 
+        61% 35%, 
+        98% 35%, 
+        68% 57%, 
+        79% 91%, 
+        50% 70%, 
+        21% 91%, 
+        32% 57%, 
+        2% 35%, 
+        39% 35%
+      );
+      opacity: 0.8;
+      animation-name: caerCorazon;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    @keyframes caerCorazon {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* Corazones rosas moviéndose dentro del recuadro */
+    .corazon-rosa {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #e91e63; /* rosa fuerte */
+      clip-path: polygon(
+        50% 0%, 
+        61% 35%, 
+        98% 35%, 
+        68% 57%, 
+        79% 91%, 
+        50% 70%, 
+        21% 91%, 
+        32% 57%, 
+        2% 35%, 
+        39% 35%
+      );
+      opacity: 0.9;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: infinite;
+    }
+
+    /* Animaciones suaves y oscilantes para corazones rosas */
+    @keyframes moverCorazon1 {
+      0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      50% {
+        transform: translate(10px, -10px) rotate(15deg);
+      }
+    }
+
+    @keyframes moverCorazon2 {
+      0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      50% {
+        transform: translate(-10px, 10px) rotate(-15deg);
+      }
+    }
+
+    @keyframes moverCorazon3 {
+      0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      50% {
+        transform: translate(8px, 8px) rotate(10deg);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="mensaje">
+    <h1>Para mi Belinda 💕</h1>
+    <p>
+      Eres lo más lindo que me ha pasado.<br>
+      Gracias por iluminar mi mundo con tu sonrisa.<br>
+      Te amo con todo mi corazón.
+    </p>
+    <div class="pareja">
+      <alt="Te amo tanto mi amor">
+    </div>
+
+    <!-- Corazones rosas animados dentro -->
+    <div class="corazon-rosa" style="top: 10px; left: 20px; animation: moverCorazon1 4s infinite;"></div>
+    <div class="corazon-rosa" style="top: 50px; left: 150px; animation: moverCorazon2 5s infinite;"></div>
+    <div class="corazon-rosa" style="top: 100px; left: 100px; animation: moverCorazon3 3.5s infinite;"></div>
+    <div class="corazon-rosa" style="top: 140px; left: 220px; animation: moverCorazon1 6s infinite;"></div>
+  </div>
+
+  <script>
+    function crearCorazonLila() {
+      const corazon = document.createElement('div');
+      corazon.classList.add('corazon-lila');
+      
+      corazon.style.left = Math.random() * 100 + 'vw';
+
+      const duracion = 6000 + Math.random() * 6000;
+      corazon.style.animationDuration = duracion + 'ms';
+
+      const tamaño = 10 + Math.random() * 10;
+      corazon.style.width = tamaño + 'px';
+      corazon.style.height = tamaño + 'px';
+
+      document.body.appendChild(corazon);
+
+      setTimeout(() => {
+        corazon.remove();
+      }, duracion);
+    }
+
+    setInterval(crearCorazonLila, 150);
+  </script>
+
+</body>
+</html>
+
